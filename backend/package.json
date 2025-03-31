@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node ./App/App.ts"
+    "jison": "jison language\\Parser.jison -o language\\Parser.js",
+    "dev": "ts-node ./App.ts"
   },
   "keywords": [],
   "author": "",
