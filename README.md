@@ -16,7 +16,7 @@
 > * React
 > * Tailwind CSS
 
-## 📟 Instalación
+## 🎡 Instalación
 
 ### 1. Inicializar un proyecto de Node.js
 ```bash
@@ -42,12 +42,13 @@ Este comando instala los tipos de TypeScript para `express` para proporcionar au
 
 ### 4. Instalar herramientas de desarrollo para TypeScript
 ```bash
-🔧 npm install --save-dev @types/cors @types/node tsc-watch typescript
+🔧 npm install --save-dev @types/cors @types/node tsc-watch typescript nodemon
 ```
 Aquí se instalan dependencias necesarias para el desarrollo:
 - `@types/cors`, `@types/node`: Tipos de TypeScript para `cors` y `node`.
 - `tsc-watch`: Herramienta para observar cambios en archivos TypeScript y recompilarlos automáticamente.
 - `typescript`: El compilador de TypeScript.
+- `nodemon`: Herramienta que reinicia la aplicación automáticamente cuando detecta cambios en los archivos fuente.
 
 ### 5. Crear un archivo de configuración para TypeScript
 ```bash
@@ -59,7 +60,7 @@ Genera un archivo `tsconfig.json` con la configuración estándar para proyectos
 ```bash
 🚀 npm run dev
 ```
-Este comando ejecuta el archivo `App.ts` con `ts-node` para iniciar la aplicación. **Nota:** Si encuentras errores relacionados con la extensión `.ts`, asegúrate de que el archivo esté configurado correctamente en `tsconfig.json`.
+Este comando ejecuta el archivo `App.ts` con `ts-node` y `nodemon` para iniciar la aplicación con recarga automática. **Nota:** Si encuentras errores relacionados con la extensión `.ts`, asegúrate de que el archivo esté configurado correctamente en `tsconfig.json`.
 
 ---
 
@@ -68,12 +69,12 @@ Este comando ejecuta el archivo `App.ts` con `ts-node` para iniciar la aplicaci�
 ### 1. Agregar scripts personalizados al archivo `package.json`
 ```json
    "scripts": {
-     "jison": "json language\\Parser.jison -o language\\Parser.js",
-     "dev": "ts-node ./App.ts"
+     "jison": "jison language\\Parser.jison -o language\\Parser.js",
+     "dev": "nodemon --ext ts --exec ts-node ./App.ts"
    }
-   ```
-   - `jison`: Genera el archivo `Parser.js` a partir de `Parser.jison`.
-   - `dev`: Inicia la aplicación en modo desarrollo con `ts-node`.
+```
+- `jison`: Genera el archivo `Parser.js` a partir de `Parser.jison`.
+- `dev`: Inicia la aplicación en modo desarrollo con `nodemon` y `ts-node`.
 
 #### Uso de los comandos en `package.json`
 
@@ -83,7 +84,7 @@ Este comando ejecuta el archivo `App.ts` con `ts-node` para iniciar la aplicaci�
    🛠 npm run jison
    ```
 
-2. **Ejecutar la aplicación en desarrollo con `ts-node`**  
+2. **Ejecutar la aplicación en desarrollo con `nodemon` y `ts-node`**  
    Usa el siguiente comando para iniciar la aplicación en modo desarrollo:
    ```bash
    🚀 npm run dev
