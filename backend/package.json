@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jison": "jison language\\Parser.jison -o language\\Parser.js",
-    "dev": "ts-node ./App.ts"
+    "dev": "nodemon --ext ts --exec ts-node ./App.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +16,12 @@
     "@types/express": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "jison": "^0.4.18",
-    "ts-node": "^10.9.2"
+    "jison": "^0.4.18"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/node": "^22.13.14",
+    "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.1",
     "typescript": "^5.8.2"
   }
