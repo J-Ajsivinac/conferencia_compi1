@@ -72,12 +72,12 @@
   }
 */
 var Parser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o};
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,9],$V1=[1,10],$V2=[5,12,17],$V3=[9,14,16],$V4=[1,25],$V5=[1,26],$V6=[1,27],$V7=[1,28],$V8=[1,29],$V9=[1,30],$Va=[1,31],$Vb=[9,16,25],$Vc=[1,44],$Vd=[1,53],$Ve=[1,57],$Vf=[1,59],$Vg=[16,25];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"ini":3,"TK_types":4,"EOF":5,"$accept":0,"$end":1},
-terminals_: {2:"error",4:"TK_types",5:"EOF"},
-productions_: [0,[3,2]],
+symbols_: {"error":2,"INIT":3,"INSTRUCTIONS":4,"EOF":5,"INSTRUCTION":6,"DECLARATION":7,"ARRAY_NEW":8,"TK_semicolon":9,"ARRAY_ASSIGNMENT":10,"ASSIGNMENT":11,"TK_types":12,"IDS":13,"TK_asign":14,"EXPRESSION":15,"TK_comma":16,"TK_id":17,"TK_integer":18,"TK_double":19,"TK_char":20,"TK_string":21,"TK_true":22,"TK_false":23,"TK_lbracket":24,"TK_rbracket":25,"TK_new":26,"ARRAY_BRACKETS":27,"ASIGN_ARRAY":28,"VALUES_ARRAY":29,"VALUE_ARRAY":30,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",9:"TK_semicolon",12:"TK_types",14:"TK_asign",16:"TK_comma",17:"TK_id",18:"TK_integer",19:"TK_double",20:"TK_char",21:"TK_string",22:"TK_true",23:"TK_false",24:"TK_lbracket",25:"TK_rbracket",26:"TK_new"},
+productions_: [0,[3,2],[3,1],[4,2],[4,1],[6,1],[6,2],[6,2],[6,2],[7,5],[7,3],[13,3],[13,1],[11,3],[15,1],[15,1],[15,1],[15,1],[15,1],[15,1],[15,1],[8,8],[8,11],[8,6],[8,8],[27,3],[28,3],[28,1],[29,3],[29,1],[30,1],[30,3],[10,6],[10,9]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -85,8 +85,8 @@ var $0 = $$.length - 1;
 switch (yystate) {
 }
 },
-table: [{3:1,4:[1,2]},{1:[3]},{5:[1,3]},{1:[2,1]}],
-defaultActions: {3:[2,1]},
+table: [{3:1,4:2,5:[1,3],6:4,7:5,8:6,10:7,11:8,12:$V0,17:$V1},{1:[3]},{5:[1,11],6:12,7:5,8:6,10:7,11:8,12:$V0,17:$V1},{1:[2,2]},o($V2,[2,4]),o($V2,[2,5]),{9:[1,13]},{9:[1,14]},{9:[1,15]},{13:16,17:[1,17]},{14:[1,19],24:[1,18]},{1:[2,1]},o($V2,[2,3]),o($V2,[2,6]),o($V2,[2,7]),o($V2,[2,8]),{9:[1,21],14:[1,20],16:[1,22]},o($V3,[2,12],{24:[1,23]}),{15:24,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{15:32,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{15:33,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},o($V2,[2,10]),{17:[1,34]},{25:[1,35]},{25:[1,36]},o($Vb,[2,14]),o($Vb,[2,15]),o($Vb,[2,16]),o($Vb,[2,17]),o($Vb,[2,18]),o($Vb,[2,19]),o($Vb,[2,20]),{9:[2,13]},{9:[1,37]},o($V3,[2,11]),{14:[1,38],24:[1,39]},{14:[1,40],24:[1,41]},o($V2,[2,9]),{15:45,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va,24:$Vc,26:[1,42],28:43},{25:[1,46]},{15:47,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{15:48,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{12:[1,49]},{9:[2,23]},{15:52,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va,24:$Vd,29:50,30:51},{9:[2,27]},{14:[1,54]},{9:[2,32]},{25:[1,55]},{24:$Ve,27:56},{16:$Vf,25:[1,58]},o($Vg,[2,29]),o($Vg,[2,30]),{15:52,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va,24:$Vd,29:60,30:51},{15:45,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va,24:$Vc,26:[1,61],28:62},{14:[1,63]},{9:[2,21]},{15:64,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{9:[2,26]},{15:52,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va,24:$Vd,30:65},{16:$Vf,25:[1,66]},{12:[1,67]},{9:[2,24]},{15:68,17:$V4,18:$V5,19:$V6,20:$V7,21:$V8,22:$V9,23:$Va},{25:[1,69]},o($Vg,[2,28]),o($Vg,[2,31]),{24:$Ve,27:70},{9:[2,33]},o([9,24],[2,25]),{24:$Ve,27:71},{9:[2,22]}],
+defaultActions: {3:[2,2],11:[2,1],32:[2,13],43:[2,23],45:[2,27],47:[2,32],56:[2,21],58:[2,26],62:[2,24],68:[2,33],71:[2,22]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -569,40 +569,54 @@ case 1:
 break;
 case 2:
 break;
-case 3:return 4;
+case 3:return 12;
 break;
-case 4:return 'TK_dot';
+case 4:return 22;
 break;
-case 5:return 'TK_mul';
+case 5:return 23;
 break;
-case 6:return 'TK_div';
+case 6:return 'TK_dot';
 break;
-case 7:return 'TK_semicolon';
+case 7:return 'TK_mul';
 break;
-case 8:return 'TK_colon';
+case 8:return 'TK_div';
 break;
-case 9:return 'TK_lbracket';
+case 9:return 9;
 break;
-case 10:return 'TK_rbracket';
+case 10:return 'TK_colon';
 break;
-case 11:return 'TK_double';
+case 11:return 14
 break;
-case 12:return 'TK_integer';
+case 12:return 'TK_lparen';
 break;
-case 13:return 'TK_id';
+case 13:return 'TK_rparen';
 break;
-case 14: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2); return 'TK_string'; 
+case 14:return 'TK_lbrace';
 break;
-case 15: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2); return 'TK_char'; 
+case 15:return 'TK_rbrace';
 break;
-case 16:console.log(yy_.yylloc.first_line, yy_.yylloc.first_column,'Lexico',yy_.yytext);
+case 16:return 24;
 break;
-case 17:return 5;
+case 17:return 25;
+break;
+case 18:return 19;
+break;
+case 19:return 18;
+break;
+case 20:return 17;
+break;
+case 21: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2); return 21; 
+break;
+case 22: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2); return 20; 
+break;
+case 23:console.log(yy_.yylloc.first_line, yy_.yylloc.first_column,'Lexico',yy_.yytext);
+break;
+case 24:return 5;
 break;
 }
 },
-rules: [/^(?:\s+)/i,/^(?:\n)/i,/^(?:[\r\t]+)/i,/^(?:(int|double|char|string|bool))/i,/^(?:\.)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:;)/i,/^(?::)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:([a-zA-z])[a-zA-Z0-9_]*)/i,/^(?:"(([^\n\"\\]?|\\.))*")/i,/^(?:'(([^\n\"\\]?|\\.))')/i,/^(?:.)/i,/^(?:$)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],"inclusive":true}}
+rules: [/^(?:\s+)/i,/^(?:\n)/i,/^(?:[\r\t]+)/i,/^(?:(int|double|char|string|bool))/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:\.)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:;)/i,/^(?::)/i,/^(?:=)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\{)/i,/^(?:\})/i,/^(?:\[)/i,/^(?:\])/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:([a-zA-z])[a-zA-Z0-9_]*)/i,/^(?:"(([^\n\"\\]?|\\.))*")/i,/^(?:'(([^\n\"\\]?|\\.))')/i,/^(?:.)/i,/^(?:$)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],"inclusive":true}}
 });
 return lexer;
 })();
