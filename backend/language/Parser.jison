@@ -15,6 +15,7 @@ content    ([^\n\"\\]?|\\.)  // Define el contenido permitido (todo excepto salt
 (int|double|char|string|bool)               return 'TK_types';
 "true"                    return 'TK_true';
 "false"                   return 'TK_false';
+"new"                     return 'TK_new';
 
 "."                       return 'TK_dot';
 "*"                       return 'TK_mul';
@@ -45,7 +46,7 @@ content    ([^\n\"\\]?|\\.)  // Define el contenido permitido (todo excepto salt
 /lex
 
 %{
-const {Types} = require('../Classes/utils/Types')
+const {Types} = require('../Classes/Utils/Types')
 
 //Expresiones
 const {Primitive} = require('../Classes/Expressions/Primitive')
@@ -53,6 +54,8 @@ const {Primitive} = require('../Classes/Expressions/Primitive')
 // Instrucciones
 const {InitID} = require('../Classes/Instructions/InitID')
 const {InitArray} = require('../Classes/Instructions/InitArray')
+const {AccessID} = require('../Classes/Instructions/AccessID')
+const {AsignArray} = require('../Classes/Instructions/AsignArray')
 %}
 
 %left 'TK_dot' 'TK_lbracket' 'TK_rbracket' 'TK_lpar' 'TK_rpar'
@@ -72,13 +75,13 @@ INSTRUCTIONS:
 
 INSTRUCTION:
     DECLARATION                    {$$ = $1}|
-    ARRAY_NEW        TK_semicolon  {$$ = $1}
-    // ARRAY_ASSIGNMENT TK_semicolon  {$$ = $1}
+    ARRAY_NEW        TK_semicolon  {$$ = $1}| 
+    ARRAY_ASSIGNMENT TK_semicolon  {$$ = $1}
     ;
 
 DECLARATION:
     TK_types IDS TK_asign EXPRESSION TK_semicolon {$$ = new InitID(@1.first_line,@1.first_column,$1,$2,$4)}         |
-    TK_types IDS                     TK_semicolon                     {$$ = new InitID(@1.first_line,@1.first_column,$1,$2,undefined) }
+    TK_types IDS                     TK_semicolon {$$ = new InitID(@1.first_line,@1.first_column,$1,$2,undefined) }
     ;
 
 IDS: 
@@ -86,18 +89,8 @@ IDS:
     TK_id               {$$ = [$1]; }
     ;
 
-
-EXPRESSION:
-    TK_integer           {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.INT) }    |
-    TK_double            {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.DOUBLE) } |
-    TK_char              {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.CHAR) }   |
-    TK_string            {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.STRING) } |
-    TK_true              {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }|
-    TK_false             {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }
-    ;
-
 ARRAY_NEW:
-    TK_types TK_id TK_lbracket TK_rbracket TK_asign TK_new TK_types ARRAY_BRACKETS {$$ = new InitArray(@1.first_line,@1.first_column,$2,$1,$8,undefined)}                                              |
+    TK_types TK_id TK_lbracket TK_rbracket TK_asign TK_new TK_types ARRAY_BRACKETS {$$ = new InitArray(@1.first_line,@1.first_column,$2,$1,$8,undefined)}  |
     TK_types TK_id TK_lbracket TK_rbracket TK_asign ASIGN_ARRAY {$$ = new InitArray(@1.first_line,@1.first_column,$2,$1,undefined,$6)}                                                                 
     ;
 
@@ -121,7 +114,17 @@ VALUE_ARRAY:
     ;
 
 
-// ARRAY_ASSIGNMENT:
-//     TK_id TK_lbracket EXPRESSION TK_rbracket TK_asign EXPRESSION {$$ = new AsignArray(@1.first_line, @1.first_column, $1, $3, $6)} |
-//     TK_id TK_lbracket EXPRESSION TK_rbracket TK_lbracket EXPRESSION TK_rbracket TK_asign EXPRESSION {$$ = new AsignMatrix(@1.first_line, @1.first_column, $1, $3, $6, $9)}
-//     ;
+ARRAY_ASSIGNMENT:
+    TK_id TK_lbracket EXPRESSION TK_rbracket TK_asign EXPRESSION {$$ = new AsignArray(@1.first_line, @1.first_column, $1, $3, $6)} 
+    ;
+
+
+EXPRESSION:
+    TK_id                {$$ = new AccessID(@1.first_line,@1.first_column,$1)}                  |
+    TK_integer           {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.INT) }    |
+    TK_double            {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.DOUBLE) } |
+    TK_char              {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.CHAR) }   |
+    TK_string            {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.STRING) } |
+    TK_true              {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }|
+    TK_false             {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }
+    ;
