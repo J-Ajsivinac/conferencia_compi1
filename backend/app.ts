@@ -1,6 +1,6 @@
 import express from "express"
-import { corsM } from './middlewares/CorsManagment'; 
-import router from "./routes/Interpreter";
+import { corsM } from './Middlewares/CorsManagment'; 
+import router from "./Routes/Interpreter";
 
 export const createAPI = () =>{
     const app = express()
