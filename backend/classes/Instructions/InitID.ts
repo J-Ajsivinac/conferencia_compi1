@@ -1,10 +1,10 @@
-import { Expression } from "../interfaces/Expression";
-import { Instruction } from "../interfaces/Instruction";
-import { convertToType } from "../utils/ConvertTypes";
-import { getValueDefaultValue } from "../utils/Defaults";
-import { ReturnType, Types } from "../utils/Types";
-import { TypesInstruction } from "../utils/TypeInst";
-import { Node } from "../utils/Node";
+import { Expression } from "../Interfaces/Expression";
+import { Instruction } from "../Interfaces/Instruction";
+import { convertToType } from "../Utils/ConvertTypes";
+import { getValueDefaultValue } from "../Utils/Defaults";
+import { ReturnType, Types } from "../Utils/Types";
+import { TypesInstruction } from "../Utils/TypeInst";
+import { Node } from "../Utils/Node";
 
 export class InitID extends Instruction {
     private type: Types;

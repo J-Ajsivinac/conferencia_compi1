@@ -1,10 +1,10 @@
-import { Expression } from "../interfaces/Expression";
-import { Instruction } from "../interfaces/Instruction";
-import { convertToType } from "../utils/ConvertTypes";
-import { getValueDefaultArray } from "../utils/Defaults";
-import { Node } from "../utils/Node";
-import { ReturnType, Types } from "../utils/Types";
-import { TypesInstruction } from "../utils/TypeInst";
+import { Expression } from "../Interfaces/Expression";
+import { Instruction } from "../Interfaces/Instruction";
+import { convertToType } from "../Utils/ConvertTypes";
+import { getValueDefaultArray } from "../Utils/Defaults";
+import { Node } from "../Utils/Node";
+import { ReturnType, Types } from "../Utils/Types";
+import { TypesInstruction } from "../Utils/TypeInst";
 
 export class InitArray extends Instruction {
 
@@ -30,6 +30,20 @@ export class InitArray extends Instruction {
 
     public ast(): Node {
         let node = new Node("Declarar Array")
+        node.pushChild(new Node(this.tempType))
+        node.pushChild(new Node(this.id))
+        node.pushChild(new Node("["))
+        node.pushChild(new Node("]"))
+        node.pushChild(new Node("="))
+        if (this.values) {
+        }else{
+            let node1 = new Node("ASSIGMENT")
+            node1.pushChild(new Node("NEW"));
+            node1.pushChild(new Node("["));
+            node1.pushChild(this.size.ast())
+            node1.pushChild(new Node("]"));
+            node.pushChild(node1);
+        }
         return node;
     }
 }

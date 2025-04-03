@@ -1,7 +1,7 @@
-import { Expression } from "../interfaces/Expression";
-import { Node } from "../utils/Node";
-import { ReturnType, Types } from "../utils/Types";
-import { TypesExp } from "../utils/TypesExp";
+import { Expression } from "../Interfaces/Expression";
+import { Node } from "../Utils/Node";
+import { ReturnType, Types } from "../Utils/Types";
+import { TypesExp } from "../Utils/TypesExp";
 
 export class Primitive extends Expression {
     constructor(line: number, column: number, public value: any, public typeValue: Types) {
