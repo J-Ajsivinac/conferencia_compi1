@@ -1,6 +1,6 @@
-import { Node } from "../utils/Node";
-import { ReturnType } from "../utils/Types";
-import { TypesExp } from "../utils/TypesExp";
+import { Node } from "../Utils/Node";
+import { ReturnType } from "../Utils/Types";
+import { TypesExp } from "../Utils/TypesExp";
 
 export abstract class Expression {
     constructor(public line: number, public column: number, public typeExp: TypesExp) { }
