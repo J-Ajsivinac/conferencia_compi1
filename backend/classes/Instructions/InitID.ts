@@ -22,15 +22,15 @@ export class InitID extends Instruction {
     private getType(type: Types): string {
         switch (type) {
             case Types.INT:
-                return "INT"
+                return "int"
             case Types.DOUBLE:
-                return "DOUBLE"
+                return "double"
             case Types.BOOLEAN:
-                return "BOOLEAN"
+                return "boolean"
             case Types.CHAR:
-                return "CHAR"
+                return "char"
             case Types.STRING:
-                return "STRING"
+                return "string"
             case Types.NULL:
                 return "NULL"
             default:

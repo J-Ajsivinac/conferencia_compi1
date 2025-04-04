@@ -4,6 +4,7 @@ import { Primitive } from "../Expressions/Primitive";
 import { ReturnType } from "../Utils/Types";
 import { TypesInstruction } from "../Utils/TypeInst";
 import { Node } from "../Utils/Node";
+import { globalSave } from "../../controllers/Interpreter";
 
 export class AsignArray extends Instruction {
     constructor(line: number, column: number, public id: string, public index: Expression, public value: Expression) {
@@ -13,9 +14,8 @@ export class AsignArray extends Instruction {
     public execute() {
         let index: ReturnType = this.index.execute()
         let value: ReturnType = this.value.execute()
-        // console.log("index  asigns", value.type)
         let primitive = new Primitive(this.line, this.column, value.value, value.type)
-        // env.reasignArrayList(this.id, index.value, primitive)
+        globalSave.reasignArrayList(this.id, index.value, primitive)
     }
     public ast(): Node {
         let node = new  Node('ASIGNAR ARRAY')

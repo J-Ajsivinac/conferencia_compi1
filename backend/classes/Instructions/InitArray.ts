@@ -1,10 +1,10 @@
 import { Expression } from "../Interfaces/Expression";
 import { Instruction } from "../Interfaces/Instruction";
 import { convertToType } from "../Utils/ConvertTypes";
-import { getValueDefaultArray } from "../Utils/Defaults";
 import { Node } from "../Utils/Node";
 import { ReturnType, Types } from "../Utils/Types";
 import { TypesInstruction } from "../Utils/TypeInst";
+import { globalSave } from "../../controllers/Interpreter";
 
 export class InitArray extends Instruction {
 
@@ -15,17 +15,12 @@ export class InitArray extends Instruction {
     }
 
     public execute() {
-        // console.log("values", this.values)
-        if (!this.size) {
-            let values_save: ReturnType[] = []
-            // console.log(this.id, " -> ", this.values)
-            
-            // env.saveArray(this.id, this.type, values_save, this.line, this.column)
-        } else {
-            let length: ReturnType = this.size.execute()
-            // env.saveArray(this.id, this.type, this.arrayByLength(length.value, this.type), this.line, this.column)
+        let values_save: ReturnType[] = []
+        for (let i = 0; i < this.values.length; i++) {
+            values_save[i] = this.values[i].execute()
         }
-        // this.values.splice(0, this.values.length)
+        console.log()
+        globalSave.saveArray(this.id, this.type, values_save, this.line, this.column)
     }
 
     public ast(): Node {
