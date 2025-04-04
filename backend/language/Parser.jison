@@ -15,6 +15,7 @@ content    ([^\n\"\\]?|\\.)  // Define el contenido permitido (todo excepto salt
 (int|double|char|string|bool)               return 'TK_types';
 "true"                    return 'TK_true';
 "false"                   return 'TK_false';
+"add"                     return 'TK_add';
 "new"                     return 'TK_new';
 
 "."                       return 'TK_dot';
@@ -50,12 +51,13 @@ const {Types} = require('../Classes/Utils/Types')
 
 //Expresiones
 const {Primitive} = require('../Classes/Expressions/Primitive')
-
+const {AccessArray} = require('../Classes/Expressions/AccessArray')
 // Instrucciones
 const {InitID} = require('../Classes/Instructions/InitID')
 const {InitArray} = require('../Classes/Instructions/InitArray')
 const {AccessID} = require('../Classes/Instructions/AccessID')
 const {AsignArray} = require('../Classes/Instructions/AsignArray')
+const {PushList} = require('../Classes/Instructions/PushList')
 %}
 
 %left 'TK_dot' 'TK_lbracket' 'TK_rbracket' 'TK_lpar' 'TK_rpar'
@@ -115,11 +117,13 @@ VALUE_ARRAY:
 
 
 ARRAY_ASSIGNMENT:
-    TK_id TK_lbracket EXPRESSION TK_rbracket TK_asign EXPRESSION {$$ = new AsignArray(@1.first_line, @1.first_column, $1, $3, $6)} 
+    TK_id TK_lbracket EXPRESSION TK_rbracket TK_asign EXPRESSION {$$ = new AsignArray(@1.first_line, @1.first_column, $1, $3, $6)} |
+    TK_id TK_dot TK_add TK_lparen EXPRESSION TK_rparen           {$$ = new PushList(@1.first_line, @1.first_column, $1, $5)} 
     ;
 
 
 EXPRESSION:
+    ACCESARRAY           {$$ = $1}  |
     TK_id                {$$ = new AccessID(@1.first_line,@1.first_column,$1)}                  |
     TK_integer           {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.INT) }    |
     TK_double            {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.DOUBLE) } |
@@ -128,3 +132,7 @@ EXPRESSION:
     TK_true              {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }|
     TK_false             {$$ = new Primitive(@1.first_line, @1.first_column, $1,Types.BOOLEAN) }
     ;
+
+ACCESARRAY:
+    TK_id TK_lbracket EXPRESSION TK_rbracket  {$$ = new AccessArray(@1.first_line,@1.first_column,$1,$3)}  
+;
