@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { Node } from "../Classes/Utils/Node";
+import { Environment } from "../Classes/Env/Environment";
+
+export const globalSave: Environment = new Environment(null, 'Global')
 
 export class Interpreter{
     public running (_: Request, res: Response){
@@ -18,10 +21,10 @@ export class Interpreter{
             
 
             for (let instruction of instructions) {
+                instruction.execute()
                 init.pushChild(instruction.ast())
             }
-            // let tree = ast[0].ast()
-            // console.log(ast.ast())
+            console.log(globalSave)
             console.log(init.getDot())
             res.json({
                 console: init.getDot(),
@@ -31,7 +34,7 @@ export class Interpreter{
             res.json({
                 console: err
             })
-            console.log(errors.length)
+            console.log(err)
         }
     }
 }
