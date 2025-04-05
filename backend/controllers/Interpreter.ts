@@ -27,7 +27,7 @@ export class Interpreter{
             console.log(globalSave)
             console.log(init.getDot())
             res.json({
-                console: init.getDot(),
+                ast: init.getDot(),
                 errors: "getErrorsString()"
             })
         } catch (err) {

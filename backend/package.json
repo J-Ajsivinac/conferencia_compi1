@@ -13,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@hpcc-js/wasm": "^2.22.4",
     "@types/express": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.21.2",
