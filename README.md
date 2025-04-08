@@ -97,14 +97,13 @@ Este comando ejecuta el archivo `App.ts` con `ts-node` y `nodemon` para iniciar 
 Contiene archivos generales y de documentación.
 
 - **`.gitignore`**: Archivos y carpetas que Git debe ignorar (por ejemplo, `node_modules`, `dist`, etc.).
-- **`arbol.txt`**: Probablemente contiene el árbol del proyecto como el que me mostraste. Es útil para documentación o revisiones.
 - **`README.md`**: Documentación del proyecto. Suele explicar cómo instalar, correr y entender el sistema.
 
 ---
 
 ### 📁 `backend/`
 
-Aquí vive todo el código de tu intérprete. Vamos por partes:
+Aquí vive todo el código del intérprete:
 
 ---
 
@@ -258,7 +257,7 @@ Controladores que **ejecutan lógica principal del backend**.
 **compilador o parser**, escrito en **Jison**.
 
 - **`Parser.jison`**: Define la gramática léxica y sintáctica del lenguaje.
-- **`Parser.js`**: El parser ya compilado desde el `.jison` (usado por tu app).
+- **`Parser.js`**: El parser ya compilado desde el `.jison`.
 
 ---
 
