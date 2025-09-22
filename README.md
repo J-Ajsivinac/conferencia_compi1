@@ -1,4 +1,4 @@
-<h1 align="center">Jison y la Esencia de los Intérpretes:Dando Vida al AST</h1>
+<h1 align="center">AST: Fundamentos y Aplicación en JISON</h1>
 
 <div align="center">
     <p>📕 OLC 1 | 🏛️ Universidad de San Carlos de Guatemala | 🙍‍♂️ Joab Ajsivinac</p>
