@@ -39,7 +39,7 @@ content    ([^\n\"\\]?|\\.)  // Define el contenido permitido (todo excepto salt
 \"{content}*\"              { yytext = yytext.substr(1,yyleng-2); return 'TK_string'; }
 \'{content}\'               { yytext = yytext.substr(1,yyleng-2); return 'TK_char'; };
 
-.                           {console.log("-------");}
+.                           {console.log("-------");}  // manejo de errores léxicos
 <<EOF>>                     return 'EOF';
 
 // Finaliza parte de Léxica

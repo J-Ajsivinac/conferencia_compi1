@@ -4,7 +4,7 @@ import { convertToType } from "../Utils/ConvertTypes";
 import { Node } from "../Utils/Node";
 import { ReturnType, Types } from "../Utils/Types";
 import { TypesInstruction } from "../Utils/TypeInst";
-import { globalSave } from "../../controllers/Interpreter";
+import { globalSave } from "../../Controllers/Interpreter";
 
 export class InitArray extends Instruction {
 

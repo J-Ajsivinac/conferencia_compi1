@@ -4,7 +4,7 @@ import { Primitive } from "../Expressions/Primitive";
 import { ReturnType } from "../Utils/Types";
 import { TypesInstruction } from "../Utils/TypeInst";
 import { Node } from "../Utils/Node";
-import { globalSave } from "../../controllers/Interpreter";
+import { globalSave } from "../../Controllers/Interpreter";
 
 export class AsignArray extends Instruction {
     constructor(line: number, column: number, public id: string, public index: Expression, public value: Expression) {

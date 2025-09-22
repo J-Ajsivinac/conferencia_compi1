@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { Interpreter } from '../controllers/Interpreter'
+import { Interpreter } from '../Controllers/Interpreter'
 
 const router = express.Router()
 const main: Interpreter = new Interpreter()

@@ -3,7 +3,7 @@ import { Symbol } from "../Env/Symbol";
 import { Node } from "../Utils/Node";
 import { ReturnType, Types } from "../Utils/Types";
 import { TypesExp } from "../Utils/TypesExp";
-import { globalSave } from "../../controllers/Interpreter";
+import { globalSave } from "../../Controllers/Interpreter";
 
 export class AccessArray extends Expression {
     public types: Types = Types.NULL

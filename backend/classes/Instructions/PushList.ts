@@ -3,7 +3,7 @@ import { Instruction } from "../Interfaces/Instruction";
 import { TypesInstruction } from "../Utils/TypeInst";
 import { ReturnType } from "../Utils/Types";
 import { Primitive } from '../Expressions/Primitive';
-import { globalSave } from "../../controllers/Interpreter";
+import { globalSave } from "../../Controllers/Interpreter";
 import { Node } from "../Utils/Node";
 
 export class PushList extends Instruction {
